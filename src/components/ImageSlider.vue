@@ -8,6 +8,7 @@
         :key="item"
         class="slider-dot"
         :class="{ active: index === currentSlider }"
+        @click="currentSlider=index"
       ></span>
     </div>
   </div>
@@ -43,7 +44,7 @@
     mounted () {
       setInterval(() => {
         this.currentSlider = (this.currentSlider + 1) % 3;
-      }, 2500);
+      }, 3000);
     },
   }
 </script>
@@ -70,6 +71,7 @@
     border: 1px solid $white-text;
     border-radius: 50%;
     margin: 0 $space-xxs;
+    cursor: pointer;
     &.active {
       background-color: $white-text;
     }
