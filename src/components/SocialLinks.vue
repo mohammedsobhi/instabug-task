@@ -44,7 +44,7 @@
 
     img {
       width: 22px;
-      margin-left: $space-s;
+      margin-inline-start: $space-s;
     }
 
     span {
@@ -58,7 +58,7 @@
     background-color: #4285F4;
     img{
       width: 32px;
-      margin-left: $space-xxs;
+      margin-inline-start: $space-xxs;
     }
   }
 

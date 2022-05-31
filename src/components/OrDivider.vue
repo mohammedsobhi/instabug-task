@@ -11,6 +11,7 @@
   gap: $space-s;
   color: $blue-text;
   font-weight: 600;
+  font-size: $text-medium;
   margin: $space-s 0;
   &:after,
   &:before {

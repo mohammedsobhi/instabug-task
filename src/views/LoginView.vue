@@ -11,10 +11,9 @@
         </header>
         <social-links/>
         <or-divider/>
-        <!-- or divider -->
-        <!-- login form -->
-        <!-- login-footer -->
+        <login-form/>
       </div>
+      <!-- companies login-footer -->
     </section>
   </div>
 </template>
@@ -23,13 +22,15 @@
 import ImageSlider from '@/components/ImageSlider.vue';
 import SocialLinks from '@/components/SocialLinks.vue';
 import OrDivider from '@/components/OrDivider.vue';
+import LoginForm from '@/components/LoginForm.vue';
 
 export default {
   name: "LoginView",
   components: {
     ImageSlider,
     SocialLinks,
-    OrDivider
+    OrDivider,
+    LoginForm
 },
 }
 </script>
@@ -75,6 +76,5 @@ export default {
       color: $blue-text;
     }
   }
-
 
 </style>
