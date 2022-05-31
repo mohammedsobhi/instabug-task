@@ -1,21 +1,46 @@
 <template>
   <div class="form-container">
-    <form class="form">
-      <div class="error-message">
+    <form class="form" @submit.prevent="handleLogin">
+      <div v-if="loginError" class="error-message">
         <p>Your email and/or password are incorrect</p>
       </div>
+
       <div class="form-control">
         <label for="email">Work Email</label>
-        <input type="email" name="email" id="email" placeholder="you@company.com">
-        <span class="email-error">enter valid email</span>
+        <input 
+          type="email"
+          name="email"
+          id="email"
+          v-model="email"
+          placeholder="you@company.com"
+          @blur="validateEmail"
+          :class="{'invalid-field' : !isValidEmail}"
+        >
+        <span v-if="!isValidEmail" class="email-error">Enter a valid email address.</span>
       </div>
+
       <div class="form-control">
         <label for="password">Password</label>
         <a href="#" class="forgot-password">Forgot password?</a>
-        <input type="password" name="password" id="password" placeholder="8+ Characters">
-        <span class="password-error">enter valid password</span>
+        <input 
+          type="password"
+          name="password"
+          id="password"
+          v-model="password"
+          placeholder="6+ Characters"
+          :class="{'invalid-field' : !isValidPassword}"
+          @input="validatePassword"
+          @blur="validatePassword"
+        >
+        <span v-if="!isValidPassword" class="password-error">{{ passwordErrMsg }}</span>
       </div>
-      <button class="login-btn" type="submit" disabled>Login</button>
+
+      <button
+        class="login-btn"
+        type="submit"
+        :disabled="!(isValidEmail && isValidPassword && email && password)"
+      >Login</button>
+
     </form>
     <div class="form-footer">
       <span>Don't have an account? <a href="#">Sign up</a></span>
@@ -26,7 +51,67 @@
 
 <script>
   export default {
-    
+    name: "LoginForm",
+    data() {
+      return {
+        email: "",
+        password: "",
+        passwordErrMsg: "",
+        isValidEmail: true,
+        isValidPassword: true,
+        isLoginError: false,
+        loginError: false,
+
+        validUsers: [
+          { email: "mohamed@instabug.com", password: "A12345678" },
+          { email: "mohamed1@instabug.com", password: "A12345678" },
+          { email: "mohamed2@instabug.com", password: "A12345678" },
+          { email: "mohamed3@instabug.com", password: "A12345678" },
+          { email: "mohamed4@instabug.com", password: "A12345678" },
+          { email: "mohamed5@instabug.com", password: "A12345678" },
+          { email: "mohamed6@instabug.com", password: "A12345678" },
+          { email: "mohamed7@instabug.com", password: "A12345678" },
+        ],
+
+      }
+    },
+    methods: {
+      validateEmail() {
+        //eslint-disable-next-line
+        this.isValidEmail = (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) ? true : false;
+      },
+
+      validatePassword() {
+        const emailName = this.email.substring(0, this.email.indexOf("@"));
+        if (this.password.includes(emailName) && emailName !== "") {
+          this.passwordErrMsg = "Password shouldn't contain email address name";
+          this.isValidPassword = false;
+        }
+        else if (this.password.length < 6 ||
+          !/[0-9]/.test(this.password) ||
+          !/[A-Z]/.test(this.password)) {
+          this.passwordErrMsg = "Must be at least 6 and contain one number and one uppercase";
+          this.isValidPassword = false;
+        }
+        else {
+          this.passwordErrMsg = "";
+          this.isValidPassword = true;
+        }
+      },
+
+      handleLogin() {
+        const userExists = this.validUsers
+          .find((user) => user.email === this.email && user.password === this.password);
+
+        if(userExists) {
+          localStorage.setItem("email", this.email);
+          this.$router.push("/");
+        }
+        else {
+          this.loginError = true;
+        }
+      }
+    },
   }
 </script>
 
@@ -67,6 +152,10 @@
     }
   }
 
+  .invalid-field {
+    border-color: #f24220;
+  }
+
   .forgot-password {
     position: absolute;
     right: 0px;
@@ -78,7 +167,10 @@
 
   .email-error,
   .password-error {
-    display: none;
+    color: #f24220;
+    font-size: $text-small;
+    display: inline-block;
+    margin-block-start: 4px;
   }
 }
 
