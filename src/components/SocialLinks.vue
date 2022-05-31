@@ -27,20 +27,11 @@
   </ul>
 </template>
 
-<script>
-  export default {
-    
-  }
-</script>
-
 <style lang="scss" scoped>
 
 .links-container {
-  width: 400px;
+  width: 100%;
   margin: $space-s 0;
-  @media (max-width: 440px) {
-    width: 300px;
-  }
 
   .login-link {
     background-color: $blue-background;
