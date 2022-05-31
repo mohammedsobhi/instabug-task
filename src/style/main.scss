@@ -1,5 +1,14 @@
 @import './reset';
 
-body{
+body {
   font-family: Helvetica, Arial, sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
 }

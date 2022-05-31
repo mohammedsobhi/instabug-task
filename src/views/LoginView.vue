@@ -5,11 +5,10 @@
     </section>
     <section class="form-container">
       <header>
-        <div class="logo">
-          <!-- <img src="" alt=""> -->
-        </div>
+        <img class="logo" src="@/assets/Instabug-logo.svg" alt="instabug logo">
         <h1 class="title">Log in to Instabug</h1>
       </header>
+      <social-links/>
       <!-- social links (ul>li>a) -->
       <!-- or divider -->
       <!-- login form -->
@@ -20,11 +19,13 @@
 
 <script>
 import ImageSlider from '@/components/ImageSlider.vue';
+import SocialLinks from '@/components/SocialLinks.vue';
 
 export default {
   name: "LoginView",
   components: {
     ImageSlider,
+    SocialLinks,
   },
 }
 </script>
@@ -50,6 +51,20 @@ export default {
     /* hide image slider on small screens */
     @media (max-width: 760px) {
       display: none;
+    }
+  }
+
+  .form-container {
+    flex-direction: column;
+
+    .logo {
+      margin: 0 auto;
+    }
+
+    .title {
+      font-weight: 400;
+      font-size: $text-largest;
+      color: $blue-text;
     }
   }
 </style>
