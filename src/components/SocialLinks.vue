@@ -2,7 +2,7 @@
   <ul class="links-container">
     <li>
       <a href="#" class="login-link google">
-        <img src="@/assets/google-logo.svg" alt="google logo">
+        <img src="@/assets/google-logo.svg" alt="google logo" width="32" height="32">
         <span>
           Google
         </span>
@@ -10,7 +10,7 @@
     </li>
     <li>
       <a href="#" class="login-link github">
-        <img src="@/assets/github-logo.svg" alt="github logo">
+        <img src="@/assets/github-logo.svg" alt="github logo" width="32" height="32">
         <span>
           Github
         </span>
@@ -18,7 +18,7 @@
     </li>
     <li>
       <a href="#" class="login-link microsoft">
-        <img src="@/assets/microsoft-logo.svg" alt="microsoft logo">
+        <img src="@/assets/microsoft-logo.svg" alt="microsoft logo" width="32" height="32">
         <span>
           Microsoft
         </span>

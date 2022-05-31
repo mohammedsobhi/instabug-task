@@ -6,7 +6,7 @@
     <section class="form-section">
       <div class="form-container">
         <header>
-          <img class="logo" src="@/assets/Instabug-logo.svg" alt="instabug logo">
+          <img class="logo" src="@/assets/Instabug-logo.svg" alt="instabug logo" width="56" height="56">
           <h1 class="title">Log in to Instabug</h1>
         </header>
         <social-links/>

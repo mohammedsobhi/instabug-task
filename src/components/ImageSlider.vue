@@ -1,6 +1,6 @@
 <template>
   <div class="slider-item">
-    <img :src="currentData.image" alt="mobile illustration" class="slider-img">
+    <img :src="currentData.image" alt="mobile illustration" class="slider-img" width="500" height="400">
     <p class="slider-text">{{ currentData.text }}</p>
     <div class="slider-dots">
       <span
