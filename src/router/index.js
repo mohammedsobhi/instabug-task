@@ -3,6 +3,8 @@ import WelcomeView from "../views/WelcomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import NotFoundView from "../views/NotFoundView.vue";
 
+import { isAuthorized } from "../utils/isAuth.js";
+
 const routes = [
   {
     path: "/",
@@ -41,6 +43,20 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
   next();
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.name == "login" && isAuthorized()) {
+    next({
+      path: "/",
+    });
+  } else if (!to.meta.allowAnonymous && !isAuthorized()) {
+    next({
+      path: "/login",
+    });
+  } else {
+    next();
+  }
 });
 
 export default router;
