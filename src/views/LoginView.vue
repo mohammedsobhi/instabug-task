@@ -13,7 +13,7 @@
         <or-divider/>
         <login-form/>
       </div>
-      <!-- companies login-footer -->
+      <companies-footer/>
     </section>
   </div>
 </template>
@@ -23,6 +23,7 @@ import ImageSlider from '@/components/ImageSlider.vue';
 import SocialLinks from '@/components/SocialLinks.vue';
 import OrDivider from '@/components/OrDivider.vue';
 import LoginForm from '@/components/LoginForm.vue';
+import CompaniesFooter from '@/components/CompaniesFooter.vue';
 
 export default {
   name: "LoginView",
@@ -30,14 +31,15 @@ export default {
     ImageSlider,
     SocialLinks,
     OrDivider,
-    LoginForm
+    LoginForm,
+    CompaniesFooter
 },
 }
 </script>
 
 <style lang="scss" scoped>
   .login-container {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
   }
 
@@ -45,6 +47,7 @@ export default {
   .img-slider {
     flex: 1;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: $space-xx-s;
