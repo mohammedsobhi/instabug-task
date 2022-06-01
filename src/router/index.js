@@ -7,9 +7,10 @@ import { isAuthorized } from "../utils/isAuth.js";
 
 const routes = [
   {
-    path: "/",
+    path: "/welcome",
     name: "welcome",
     component: WelcomeView,
+    alias: "/",
     meta: {
       allowAnonymous: false,
       title: "Welcome | Instabug",
@@ -48,7 +49,7 @@ router.beforeEach((to, from, next) => {
 router.beforeEach((to, from, next) => {
   if (to.name == "login" && isAuthorized()) {
     next({
-      path: "/",
+      path: "/welcome",
     });
   } else if (!to.meta.allowAnonymous && !isAuthorized()) {
     next({

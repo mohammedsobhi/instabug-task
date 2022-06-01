@@ -105,7 +105,7 @@
 
         if(userExists) {
           localStorage.setItem("email", this.email);
-          this.$router.push("/");
+          this.$router.push("/welcome");
         }
         else {
           this.loginError = true;
